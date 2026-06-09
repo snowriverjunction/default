@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BrokerBot Brand Kit 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@400;500;600;700;800;900&family=Mulish:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* === BRAND COLOURS (Styleguide) === */
+  --bb-pink: #FC0A7E;
+  --bb-pink-hover: #E0096F;
+  --bb-pink-light: #FFF0F6;
+  --bb-pink-glow: rgba(252, 10, 126, 0.08);
+  --bb-pink-glow-strong: rgba(252, 10, 126, 0.15);
+  --bb-purple: #86308B;
+  --bb-purple-hover: #6E2873;
+  --bb-purple-light: #F5EBF6;
+  --bb-purple-glow: rgba(134, 48, 139, 0.08);
+  --bb-slate: #34495E;
+  --bb-dark: #0B1818;
+  --bb-dark-surface: #0F2020;
+  --bb-dark-card: #142828;
+  --bb-dark-border: #1E3A3A;
+  /* === UI COLOURS === */
+  --bb-text-primary: #2F3439;
+  --bb-text-secondary: #8F8F8F;
+  --bb-success: #33B5AB;
+  --bb-error: #FF004E;
+  /* === LIGHT MODE (DEFAULT) === */
+  --bb-white: #FFFFFF;
+  --bb-bg: #FFFFFF;
+  --bb-bg-soft: #F8F9FB;
+  --bb-bg-card: #FFFFFF;
+  --bb-border: #E8ECF0;
+  --bb-border-hover: #D0D6DE;
+  --bb-gray-100: #F4F6F8;
+  --bb-gray-200: #E8ECF0;
+  --bb-gray-300: #D0D6DE;
+  --bb-gray-400: #8F8F8F;
+  --bb-gray-500: #6B7280;
+  --bb-gray-600: #4B5563;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Mulish', sans-serif;
+  background: var(--bb-bg);
+  color: var(--bb-text-primary);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ====== TOAST ====== */
+.toast {
+  position: fixed; bottom: 32px; right: 32px;
+  background: var(--bb-pink); color: var(--bb-white);
+  padding: 12px 24px; border-radius: 8px;
+  font-weight: 700; font-size: 14px; z-index: 9999;
+  opacity: 0; transform: translateY(16px);
+  transition: all 0.3s; pointer-events: none;
+}
+.toast.show { opacity: 1; transform: translateY(0); }
+
+/* ====== NAV ====== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--bb-border);
+  padding: 0 40px;
+}
+.nav-inner {
+  max-width: 1400px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-family: 'Gothic A1', sans-serif; font-weight: 800;
+  font-size: 22px; color: var(--bb-purple); letter-spacing: -0.5px;
+}
+.nav-tagline {
+  font-family: 'Mulish'; font-size: 11px; font-weight: 600;
+  color: var(--bb-gray-400); letter-spacing: 0.5px; margin-left: 6px;
+}
+.nav-links { display: flex; gap: 2px; list-style: none; flex-wrap: wrap; }
+.nav-links a {
+  color: var(--bb-gray-500); text-decoration: none;
+  font-size: 13px; font-weight: 600; padding: 6px 12px;
+  border-radius: 6px; transition: all 0.2s;
+}
+.nav-links a:hover, .nav-links a.active {
+  color: var(--bb-pink); background: var(--bb-pink-glow);
+}
+
+/* ====== HERO (DARK ACCENT SECTION) ====== */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  padding: 120px 40px 80px; position: relative; overflow: hidden;
+  background: var(--bb-dark); color: #fff;
+}
+.hero::before {
+  content: ''; position: absolute; top: -300px; left: 50%;
+  transform: translateX(-50%); width: 900px; height: 900px;
+  background: radial-gradient(circle, rgba(252,10,126,0.12) 0%, rgba(134,48,139,0.06) 40%, transparent 70%);
+  pointer-events: none;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  padding: 8px 20px; border-radius: 100px;
+  font-size: 12px; font-weight: 700; color: var(--bb-pink);
+  margin-bottom: 40px; letter-spacing: 2px; text-transform: uppercase;
+}
+.hero h1 {
+  font-family: 'Gothic A1', sans-serif;
+  font-size: clamp(44px, 7vw, 88px); font-weight: 900;
+  color: #fff; line-height: 1.05;
+  letter-spacing: -2px; margin-bottom: 24px;
+}
+.hero h1 .pink { color: var(--bb-pink); }
+.hero .hero-sub {
+  font-size: 20px; color: rgba(255,255,255,0.55);
+  max-width: 600px; margin-bottom: 48px; line-height: 1.65;
+}
+.hero-meta { display: flex; gap: 40px; flex-wrap: wrap; justify-content: center; }
+.hero-meta .meta-value {
+  font-family: 'Gothic A1', sans-serif; font-size: 13px;
+  font-weight: 700; color: rgba(255,255,255,0.35);
+  text-transform: uppercase; letter-spacing: 1.5px;
+}
+
+/* ====== DARK ACCENT SECTIONS ====== */
+.section-dark {
+  background: var(--bb-dark); color: #fff;
+  margin-left: calc(-50vw + 50%); margin-right: calc(-50vw + 50%);
+  padding-left: calc(50vw - 50%); padding-right: calc(50vw - 50%);
+}
+.section-dark .section-desc { color: rgba(255,255,255,0.5); }
+.section-dark .card {
+  background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08);
+}
+.section-dark .card:hover { border-color: rgba(255,255,255,0.15); }
+.section-dark .card h3 { color: #fff; }
+.section-dark .card p { color: rgba(255,255,255,0.55); }
+.section-dark .copy-block {
+  background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08);
+}
+.section-dark .copy-block .copy-text { color: rgba(255,255,255,0.75); }
+.section-dark .copy-block .copy-btn {
+  background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.5);
+}
+.section-dark .copy-block .copy-btn:hover {
+  background: var(--bb-pink); color: #fff; border-color: var(--bb-pink);
+}
+
+/* ====== LIGHT SECTIONS (DEFAULT) ====== */
+section {
+  max-width: 1200px; margin: 0 auto; padding: 100px 40px;
+}
+section + section { border-top: 1px solid var(--bb-border); }
+.section-label {
+  font-size: 12px; font-weight: 800; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--bb-pink); margin-bottom: 16px;
+  font-family: 'Gothic A1', sans-serif;
+}
+.section-title {
+  font-family: 'Gothic A1', sans-serif;
+  font-size: clamp(30px, 4vw, 46px); font-weight: 900;
+  color: var(--bb-text-primary); line-height: 1.15;
+  letter-spacing: -0.8px; margin-bottom: 20px;
+}
+.section-desc {
+  font-size: 17px; color: var(--bb-gray-500);
+  max-width: 680px; margin-bottom: 48px;
+}
+
+/* ====== CARDS (LIGHT) ====== */
+.card {
+  background: var(--bb-bg-card); border: 1px solid var(--bb-border);
+  border-radius: 12px; padding: 32px; transition: all 0.3s;
+}
+.card:hover { border-color: var(--bb-border-hover); box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+.card-label {
+  font-size: 11px; font-weight: 800; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--bb-pink); margin-bottom: 12px;
+  font-family: 'Gothic A1', sans-serif;
+}
+.card h3 {
+  font-family: 'Gothic A1', sans-serif; font-size: 21px;
+  font-weight: 800; color: var(--bb-text-primary);
+  margin-bottom: 12px; letter-spacing: -0.3px;
+}
+.card p { color: var(--bb-gray-500); font-size: 15px; line-height: 1.7; }
+
+/* ====== GRIDS ====== */
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+@media (max-width: 900px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } }
+
+/* ====== SWATCHES ====== */
+.swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+.swatch {
+  border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--bb-border); cursor: pointer;
+  transition: all 0.3s; position: relative; background: #fff;
+}
+.swatch:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+.swatch:active { transform: scale(0.98); }
+.swatch-color { height: 96px; position: relative; }
+.swatch-info { padding: 14px 16px; }
+.swatch-name { font-weight: 700; font-size: 14px; color: var(--bb-text-primary); margin-bottom: 3px; }
+.swatch-hex { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--bb-gray-400); }
+.swatch .copy-badge {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  background: rgba(0,0,0,0.75); color: #fff; padding: 6px 14px;
+  border-radius: 6px; font-size: 12px; font-weight: 700;
+  opacity: 0; transition: opacity 0.2s; pointer-events: none;
+}
+.swatch:hover .copy-badge { opacity: 1; }
+
+/* ====== COPY BLOCKS (LIGHT) ====== */
+.copy-block {
+  background: var(--bb-bg-soft); border: 1px solid var(--bb-border);
+  border-radius: 10px; padding: 24px; position: relative; margin-bottom: 16px;
+}
+.copy-block .copy-btn {
+  position: absolute; top: 16px; right: 16px;
+  background: #fff; border: 1px solid var(--bb-border);
+  color: var(--bb-gray-500); padding: 6px 14px; border-radius: 3px;
+  font-size: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s;
+  font-family: 'Mulish', sans-serif;
+}
+.copy-block .copy-btn:hover {
+  background: var(--bb-pink); color: #fff; border-color: var(--bb-pink);
+}
+.copy-block .copy-label {
+  font-size: 11px; font-weight: 800; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--bb-pink); margin-bottom: 10px;
+  font-family: 'Gothic A1', sans-serif;
+}
+.copy-block .copy-text {
+  color: var(--bb-text-primary); font-size: 15px; line-height: 1.75;
+  white-space: pre-wrap; padding-right: 80px;
+}
+
+/* ====== TABS ====== */
+.tab-nav {
+  display: flex; gap: 2px; margin-bottom: 32px; flex-wrap: wrap;
+  border-bottom: 1px solid var(--bb-border);
+}
+.tab-btn {
+  padding: 12px 20px; border: none; background: transparent;
+  color: var(--bb-gray-400); font-family: 'Mulish', sans-serif;
+  font-size: 14px; font-weight: 700; cursor: pointer;
+  border-bottom: 2px solid transparent; transition: all 0.2s;
+  margin-bottom: -1px;
+}
+.tab-btn:hover { color: var(--bb-text-primary); }
+.tab-btn.active { color: var(--bb-pink); border-bottom-color: var(--bb-pink); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* ====== TYPE SPECIMENS ====== */
+.type-specimen {
+  background: var(--bb-bg-soft); border: 1px solid var(--bb-border);
+  border-radius: 12px; padding: 40px; margin-bottom: 24px;
+}
+.type-specimen .specimen-label {
+  font-size: 11px; font-weight: 800; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--bb-pink); margin-bottom: 16px;
+  font-family: 'Gothic A1', sans-serif;
+}
+.type-specimen .specimen-meta {
+  font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--bb-gray-400);
+}
+
+/* ====== VOICE BARS ====== */
+.voice-bar {
+  display: flex; align-items: center; gap: 16px;
+  padding: 16px 0; border-bottom: 1px solid var(--bb-border);
+}
+.voice-bar:last-child { border-bottom: none; }
+.voice-bar .bar-label { width: 120px; font-size: 13px; font-weight: 700; color: var(--bb-gray-400); flex-shrink: 0; }
+.voice-bar .bar-track { flex: 1; height: 8px; background: var(--bb-gray-100); border-radius: 100px; overflow: hidden; }
+.voice-bar .bar-fill { height: 100%; background: linear-gradient(90deg, var(--bb-pink), var(--bb-purple)); border-radius: 100px; }
+.voice-bar .bar-end { width: 100px; text-align: right; font-size: 13px; font-weight: 700; color: var(--bb-gray-400); flex-shrink: 0; }
+
+/* ====== COMP TABLE ====== */
+.comp-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.comp-table th {
+  text-align: left; padding: 14px 16px; font-weight: 800; font-size: 13px;
+  letter-spacing: 0.5px; color: var(--bb-gray-500);
+  border-bottom: 2px solid var(--bb-border);
+  background: var(--bb-bg-soft); position: sticky; top: 64px;
+  font-family: 'Gothic A1', sans-serif;
+}
+.comp-table th.highlight { color: var(--bb-pink); }
+.comp-table td { padding: 12px 16px; border-bottom: 1px solid var(--bb-border); color: var(--bb-text-primary); }
+.comp-table tr:hover td { background: var(--bb-bg-soft); }
+.comp-table .check { color: var(--bb-success); font-weight: 700; }
+.comp-table .cross { color: var(--bb-gray-300); }
+.comp-table .partial { color: #D4930D; }
+
+/* ====== DO/DONT ====== */
+.do-dont-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 700px) { .do-dont-grid { grid-template-columns: 1fr; } }
+.do-box, .dont-box { background: #fff; border-radius: 12px; padding: 32px; border: 1px solid var(--bb-border); }
+.do-box { border-top: 3px solid var(--bb-success); }
+.dont-box { border-top: 3px solid var(--bb-error); }
+.do-box h4 { color: var(--bb-success); margin-bottom: 16px; font-size: 16px; font-family: 'Gothic A1', sans-serif; font-weight: 800; }
+.dont-box h4 { color: var(--bb-error); margin-bottom: 16px; font-size: 16px; font-family: 'Gothic A1', sans-serif; font-weight: 800; }
+.do-box li, .dont-box li {
+  list-style: none; padding: 8px 0; font-size: 14px;
+  color: var(--bb-text-primary); display: flex; align-items: flex-start; gap: 10px;
+}
+.do-box li::before { content: '\2713'; color: var(--bb-success); font-weight: 700; flex-shrink: 0; }
+.dont-box li::before { content: '\2717'; color: var(--bb-error); font-weight: 700; flex-shrink: 0; }
+
+/* ====== ICP CARDS ====== */
+.icp-card { background: #fff; border: 1px solid var(--bb-border); border-radius: 12px; padding: 32px; }
+.icp-card .icp-icon { width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 20px; }
+.icp-card h3 { font-family: 'Gothic A1', sans-serif; font-size: 20px; font-weight: 800; color: var(--bb-text-primary); margin-bottom: 8px; }
+.icp-card .icp-tagline { color: var(--bb-pink); font-size: 14px; font-weight: 700; margin-bottom: 16px; }
+.icp-card .icp-detail { font-size: 14px; color: var(--bb-gray-500); margin-bottom: 6px; }
+.icp-card .icp-detail strong { color: var(--bb-text-primary); }
+
+/* ====== SLIDE MOCKS ====== */
+.slide-mock {
+  border: 1px solid var(--bb-border); border-radius: 10px;
+  aspect-ratio: 16/9; padding: 32px;
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.slide-mock.dark-slide { background: var(--bb-dark); }
+.slide-mock.light-slide { background: #fff; }
+.slide-mock .slide-label {
+  position: absolute; top: 12px; left: 16px; font-size: 10px;
+  font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;
+  font-family: 'Gothic A1', sans-serif;
+}
+.slide-mock.dark-slide .slide-label { color: rgba(255,255,255,0.3); }
+.slide-mock.light-slide .slide-label { color: var(--bb-gray-400); }
+
+/* ====== BUTTON SPECIMENS ====== */
+.btn-specimen {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 50px; border-radius: 3px; padding: 0 24px;
+  font-family: 'Mulish', sans-serif; font-size: 15px; font-weight: 700;
+  cursor: default; transition: all 0.2s; border: none;
+}
+.btn-pink { background: var(--bb-pink); color: #fff; }
+.btn-pink-hover { background: var(--bb-pink-hover); color: #fff; }
+.btn-purple { background: var(--bb-purple); color: #fff; }
+.btn-purple-hover { background: var(--bb-purple-hover); color: #fff; }
+.btn-disabled { background: #E8ECF0; color: #B0B8C4; }
+.btn-outline-pink { background: transparent; color: var(--bb-pink); border: 2px solid var(--bb-pink); }
+.btn-outline-purple { background: transparent; color: var(--bb-purple); border: 2px solid var(--bb-purple); }
+.btn-outline-pink-hover { background: var(--bb-pink-glow); color: var(--bb-pink); border: 2px solid var(--bb-pink); }
+.btn-outline-purple-hover { background: var(--bb-purple-glow); color: var(--bb-purple); border: 2px solid var(--bb-purple); }
+
+/* ====== CALLOUT BOX ====== */
+.callout {
+  background: var(--bb-purple-light); border: 1px solid rgba(134,48,139,0.15);
+  border-left: 4px solid var(--bb-purple); border-radius: 8px;
+  padding: 24px 28px; margin-bottom: 24px;
+}
+.callout-pink {
+  background: var(--bb-pink-light); border: 1px solid rgba(252,10,126,0.12);
+  border-left: 4px solid var(--bb-pink); border-radius: 8px;
+  padding: 24px 28px; margin-bottom: 24px;
+}
+.callout h4, .callout-pink h4 {
+  font-family: 'Gothic A1', sans-serif; font-weight: 800; font-size: 15px;
+  margin-bottom: 8px;
+}
+.callout h4 { color: var(--bb-purple); }
+.callout-pink h4 { color: var(--bb-pink); }
+.callout p, .callout-pink p { font-size: 14px; color: var(--bb-text-primary); line-height: 1.65; }
+
+/* ====== FOOTER ====== */
+footer {
+  text-align: center; padding: 60px 40px;
+  border-top: 1px solid var(--bb-border);
+  color: var(--bb-gray-400); font-size: 13px;
+}
+
+/* ====== UTILITY ====== */
+.mt-12{margin-top:12px}.mt-16{margin-top:16px}.mt-24{margin-top:24px}.mt-32{margin-top:32px}.mt-48{margin-top:48px}
+.mb-12{margin-bottom:12px}.mb-24{margin-bottom:24px}.mb-32{margin-bottom:32px}
+.inline-tag {
+  display: inline-block; background: var(--bb-pink-glow-strong);
+  color: var(--bb-pink); padding: 3px 10px; border-radius: 3px;
+  font-size: 12px; font-weight: 700; margin: 2px 4px 2px 0;
+}
+.inline-tag-purple {
+  display: inline-block; background: rgba(134,48,139,0.1);
+  color: var(--bb-purple); padding: 3px 10px; border-radius: 3px;
+  font-size: 12px; font-weight: 700; margin: 2px 4px 2px 0;
+}
+
+/* ====== DARK BANNER FULL-WIDTH ====== */
+.full-dark-banner {
+  background: var(--bb-dark);
+  margin-left: -40px; margin-right: -40px;
+  padding: 64px 40px;
+  border-radius: 16px;
+  text-align: center;
+}
+.full-dark-banner .stat-row {
+  display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; margin-top: 32px;
+}
+.full-dark-banner .stat-item { text-align: center; }
+.full-dark-banner .stat-num {
+  font-family: 'Gothic A1', sans-serif; font-size: 44px; font-weight: 900;
+  color: var(--bb-pink); line-height: 1;
+}
+.full-dark-banner .stat-label { font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 6px; }
+</style>
+</head>
+<body>
+
+<div class="toast" id="toast">Copied to clipboard</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div style="display:flex;align-items:baseline;gap:0">
+      <div class="nav-logo">brokerbot</div>
+      <span class="nav-tagline">re engage</span>
+      <span style="color:var(--bb-gray-400);font-size:13px;margin-left:12px;font-weight:500">Brand Kit</span>
+    </div>
+    <div class="nav-links">
+      <a href="#foundation">Foundation</a>
+      <a href="#colors">Colors</a>
+      <a href="#typography">Type</a>
+      <a href="#buttons">Buttons</a>
+      <a href="#voice">Voice</a>
+      <a href="#messaging">Messaging</a>
+      <a href="#icp">ICP</a>
+      <a href="#competitive">Competitive</a>
+      <a href="#sales-copy">Sales Copy</a>
+      <a href="#slides">Slides</a>
+      <a href="#dos-donts">Do's &amp; Don'ts</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ================================================================ -->
+<!-- HERO (Dark accent section, like a homepage banner) -->
+<!-- ================================================================ -->
+<div class="hero" id="hero">
+  <div class="hero-badge">&#9670; Confidential Brand Document</div>
+  <h1>Own Your Customers.<br><span class="pink">Own the Funnel.</span></h1>
+  <p class="hero-sub">The definitive brand identity system for BrokerBot, Canada's client-retention and referral automation platform for real estate professionals.</p>
+  <div class="hero-meta">
+    <div><div class="meta-value">Version 3.0</div></div>
+    <div><div class="meta-value">March 2026</div></div>
+    <div><div class="meta-value">Internal + External</div></div>
+  </div>
+</div>
+
+<!-- ================================================================ -->
+<!-- 01 FOUNDATION -->
+<!-- ================================================================ -->
+<section id="foundation">
+  <div class="section-label">01 / Brand Foundation</div>
+  <div class="section-title">Who We Are</div>
+  <div class="section-desc">BrokerBot is Canada's client-retention and referral automation platform for real estate professionals. We help housing professionals turn relationships into lifetime revenue without spam, gimmicks, or rented attention.</div>
+  <div class="grid-3 mb-32">
+    <div class="card"><div class="card-label">Mission</div><h3>Turn relationships into lifetime revenue</h3><p>Help housing professionals keep clients for life using AI-powered home value intelligence, automated engagement, and white-labeled brand experiences, all built on 18M+ Canadian property records.</p></div>
+    <div class="card"><div class="card-label">Vision</div><h3>Every Canadian housing professional owns their funnel</h3><p>A future where no mortgage broker, agent, appraiser, or insurance pro loses a client to bank inertia or portal capture. Where your brand stays top-of-mind from first deal to final renewal.</p></div>
+    <div class="card"><div class="card-label">Promise</div><h3>Your brand is the hero. Always.</h3><p>White-labeled. Co-branded. Your name, your logo, your face. We power the engine; you own the relationship. BrokerBot stays invisible to your clients.</p></div>
+  </div>
+
+  <div class="section-label mt-48">Core Beliefs</div>
+  <div class="grid-2 mt-24">
+    <div class="card"><h3>Your brand should be the hero, not a portal's</h3><p>Platforms that insert their own brand between you and your client are renting you attention. BrokerBot is white-labeled. You own the relationship.</p></div>
+    <div class="card"><h3>Monthly value beats monthly noise</h3><p>Homeowners don't want another birthday card or rate blast. They want to know what their home is worth. That is the hook. That is the value.</p></div>
+    <div class="card"><h3>Automation should sound human</h3><p>Expert-written journeys. No robotic templates. Every touchpoint feels like it came from a professional who cares, because the content was built by people who do.</p></div>
+    <div class="card"><h3>Data privacy and consent matter in Canada</h3><p>PIPEDA compliance is not optional. Canadian data sovereignty is not a feature, it is table stakes. Your client data stays in Canada.</p></div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 02 COLOURS -->
+<!-- ================================================================ -->
+<section id="colors">
+  <div class="section-label">02 / Colour System</div>
+  <div class="section-title">Brand Palette</div>
+  <div class="section-desc">Click any swatch to copy its hex code. BrokerBot uses a light-first approach with strategic dark accent sections for hero banners and high-impact moments.</div>
+
+  <div class="callout">
+    <h4>Design Direction: Light-First, Dark-Accent</h4>
+    <p>The default canvas across the site and all materials is <strong>white / light backgrounds</strong>. Dark sections (#0B1818) are reserved for high-impact hero banners, stat blocks, and CTA strips where the pink-on-dark contrast creates maximum visual punch. This approach keeps the overall experience clean and modern while giving key moments dramatic emphasis.</p>
+  </div>
+
+  <div class="section-label mt-32">Brand Colours</div>
+  <div class="swatch-grid mt-16">
+    <div class="swatch" onclick="copyColor('#FC0A7E')"><div class="swatch-color" style="background:#FC0A7E"><span class="copy-badge">Click to copy</span></div><div class="swatch-info"><div class="swatch-name">Primary / CTA</div><div class="swatch-hex">#FC0A7E</div></div></div>
+    <div class="swatch" onclick="copyColor('#86308B')"><div class="swatch-color" style="background:#86308B"><span class="copy-badge">Click to copy</span></div><div class="swatch-info"><div class="swatch-name">Secondary / Purple</div><div class="swatch-hex">#86308B</div></div></div>
+    <div class="swatch" onclick="copyColor('#34495E')"><div class="swatch-color" style="background:#34495E"><span class="copy-badge">Click to copy</span></div><div class="swatch-info"><div class="swatch-name">Slate</div><div class="swatch-hex">#34495E</div></div></div>
+    <div class="swatch" onclick="copyColor('#0B1818')"><div class="swatch-color" style="background:#0B1818"><span class="copy-badge">Click to copy</span></div><div class="swatch-info"><div class="swatch-name">Tertiary / Dark</div><div class="swatch-hex">#0B1818</div></div></div>
+  </div>
+
+  <div class="section-label mt-32">UI Colours</div>
+  <div class="swatch-grid mt-16">
+    <div class="swatch" onclick="copyColor('#2F3439')"><div class="swatch-color" style="background:#2F3439"><span class="copy-badge">Click to copy</span></div><div class="swatch-info"><div class="swatch-name">Primary Text</div><div class="swatch-hex">#2F3439</div></div></div>
+    <div class="swatch" onclick="copyColor('#8F8F8F')"><div class="swatch-color" style="background:#8F8F8F"><span class="copy-badge">Click to copy</span></div><div class="swatch-info"><div class="swatch-name">Secondary Text</div><div class="swatch-hex">#8F8F8F</div></div></div>
+    <div class="swatch" onclick="copyColor('#FFFFFF')"><div class="swatch-color" style="background:#FFF;border-bottom:1px solid #E8ECF0"><span class="copy-badge" style="color:#000">Click to copy</span></div><div class="swatch-info"><div class="swatch-name">White (Default BG)</div><div class="swatch-hex">#FFFFFF</div></div></div>
+    <div class="swatch" onclick="copyColor('#F8F9FB')"><div class="swatch-color" style="background:#F8F9FB;border-bottom:1px solid #E8ECF0"><span class="copy-badge" style="color:#000">Click to copy</span></div><div class="swatch-info"><div class="swatch-name">Soft Background</div><div class="swatch-hex">#F8F9FB</div></div></div>
+  </div>
+
+  <div class="section-label mt-32">Alert Colours</div>
+  <div class="swatch-grid mt-16">
+    <div class="swatch" onclick="copyColor('#33B5AB')"><div class="swatch-color" style="background:#33B5AB"><span class="copy-badge">Click to copy</span></div><div class="swatch-info"><div class="swatch-name">Success</div><div class="swatch-hex">#33B5AB</div></div></div>
+    <div class="swatch" onclick="copyColor('#FF004E')"><div class="swatch-color" style="background:#FF004E"><span class="copy-badge">Click to copy</span></div><div class="swatch-info"><div class="swatch-name">Error</div><div class="swatch-hex">#FF004E</div></div></div>
+  </div>
+
+  <div class="section-label mt-32">Dark Accent Palette (Hero / CTA Sections)</div>
+  <div class="swatch-grid mt-16">
+    <div class="swatch" onclick="copyColor('#0B1818')"><div class="swatch-color" style="background:#0B1818"><span class="copy-badge">Click to copy</span></div><div class="swatch-info"><div class="swatch-name">Dark Base</div><div class="swatch-hex">#0B1818</div></div></div>
+    <div class="swatch" onclick="copyColor('#0F2020')"><div class="swatch-color" style="background:#0F2020"><span class="copy-badge">Click to copy</span></div><div class="swatch-info"><div class="swatch-name">Dark Surface</div><div class="swatch-hex">#0F2020</div></div></div>
+    <div class="swatch" onclick="copyColor('#142828')"><div class="swatch-color" style="background:#142828"><span class="copy-badge">Click to copy</span></div><div class="swatch-info"><div class="swatch-name">Dark Card</div><div class="swatch-hex">#142828</div></div></div>
+    <div class="swatch" onclick="copyColor('#1E3A3A')"><div class="swatch-color" style="background:#1E3A3A"><span class="copy-badge">Click to copy</span></div><div class="swatch-info"><div class="swatch-name">Dark Border</div><div class="swatch-hex">#1E3A3A</div></div></div>
+  </div>
+
+  <div class="card mt-48">
+    <div class="card-label">Colour Application Rules</div>
+    <h3>Light-First, Dark-Accent Strategy</h3>
+    <p><strong style="color:var(--bb-text-primary)">Default canvas: white.</strong> All main site pages, product UI, marketing pages, and collateral default to white (#FFFFFF) or soft gray (#F8F9FB) backgrounds.</p>
+    <p class="mt-16"><strong style="color:var(--bb-text-primary)">Dark sections for impact.</strong> Use #0B1818 for hero banners, stat callout strips, CTA sections, and pricing cards where pink-on-dark contrast creates maximum punch. Think of these as "spotlight" moments, not the entire stage.</p>
+    <p class="mt-16"><strong style="color:var(--bb-text-primary)">Pink (#FC0A7E) is for action.</strong> CTAs, key stats, interactive elements, hover states. Never as a large background fill.</p>
+    <p class="mt-16"><strong style="color:var(--bb-text-primary)">Purple (#86308B) is being tested for buttons.</strong> A/B test purple vs. pink for primary CTA buttons starting with the pricing page. Purple differentiates BrokerBot from the "every SaaS uses pink" crowd and ties into the logo's secondary colour.</p>
+    <p class="mt-16"><strong style="color:var(--bb-text-primary)">Logo treatment:</strong> Logo_light (purple icon + dark text) on white/light backgrounds. Logo_dark (white icon + white text) on dark or pink backgrounds.</p>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 03 TYPOGRAPHY -->
+<!-- ================================================================ -->
+<section id="typography">
+  <div class="section-label">03 / Typography</div>
+  <div class="section-title">Type System</div>
+  <div class="section-desc">BrokerBot uses Google Fonts exclusively. Gothic A1 for headlines brings geometric authority; Mulish for body text delivers warm, modern readability.</div>
+
+  <div class="type-specimen">
+    <div class="specimen-label">Headings / Display</div>
+    <div style="font-family:'Gothic A1',sans-serif;font-size:48px;font-weight:900;letter-spacing:-1.5px;color:var(--bb-text-primary);margin-bottom:16px;line-height:1.1">Own Your Customers. Own the Funnel.</div>
+    <div class="specimen-meta">Gothic A1 / Black 900 / -1.5px tracking / H1, hero text, section titles</div>
+  </div>
+  <div class="type-specimen">
+    <div class="specimen-label">Body / UI Text</div>
+    <div style="font-family:'Mulish',sans-serif;font-size:17px;font-weight:400;line-height:1.75;color:var(--bb-gray-500);margin-bottom:16px">Homeowners today are more informed than ever about their property's value. BrokerBot helps your brand meet them where they are, with automated monthly home value updates that keep you top-of-mind.</div>
+    <div class="specimen-meta">Mulish / Regular 400 / 1.75 line-height / Body copy, descriptions, UI</div>
+  </div>
+  <div class="type-specimen">
+    <div class="specimen-label">Data / Monospace</div>
+    <div style="font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:400;color:var(--bb-pink);margin-bottom:16px">$5,784 per loan &times; 400 lost deals = $2,313,600 evaporated</div>
+    <div class="specimen-meta">JetBrains Mono / Regular 400 / Stats, hex codes, data displays</div>
+  </div>
+
+  <div class="grid-2 mt-32">
+    <div class="card">
+      <div class="card-label">Type Scale</div>
+      <div style="margin-top:16px">
+        <div style="font-family:'Gothic A1';font-size:46px;font-weight:900;color:var(--bb-text-primary);letter-spacing:-1.5px;line-height:1.1">H1 / 46px</div>
+        <div style="font-family:'Gothic A1';font-size:34px;font-weight:800;color:var(--bb-text-primary);letter-spacing:-1px;margin-top:16px;line-height:1.15">H2 / 34px</div>
+        <div style="font-family:'Gothic A1';font-size:22px;font-weight:800;color:var(--bb-text-primary);letter-spacing:-.3px;margin-top:14px">H3 / 22px</div>
+        <div style="font-family:'Mulish';font-size:17px;color:var(--bb-gray-500);margin-top:14px">Body / 17px</div>
+        <div style="font-family:'Mulish';font-size:14px;color:var(--bb-gray-400);margin-top:12px">Small / 14px</div>
+        <div style="font-family:'Gothic A1';font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--bb-pink);margin-top:12px">LABEL / 11PX / CAPS</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-label">Font Weights</div>
+      <div style="margin-top:16px">
+        <div style="font-family:'Gothic A1';font-weight:900;font-size:20px;color:var(--bb-text-primary);margin-bottom:6px">Gothic A1 Black 900</div>
+        <p style="font-size:14px;color:var(--bb-gray-400);margin-bottom:18px">Headlines, hero text, section titles</p>
+        <div style="font-family:'Gothic A1';font-weight:800;font-size:20px;color:var(--bb-text-primary);margin-bottom:6px">Gothic A1 ExtraBold 800</div>
+        <p style="font-size:14px;color:var(--bb-gray-400);margin-bottom:18px">Card titles, labels, subheads</p>
+        <div style="font-family:'Mulish';font-weight:700;font-size:20px;color:var(--bb-text-primary);margin-bottom:6px">Mulish Bold 700</div>
+        <p style="font-size:14px;color:var(--bb-gray-400);margin-bottom:18px">Buttons, CTAs, emphasis text</p>
+        <div style="font-family:'Mulish';font-weight:400;font-size:20px;color:var(--bb-text-primary);margin-bottom:6px">Mulish Regular 400</div>
+        <p style="font-size:14px;color:var(--bb-gray-400)">Body copy, descriptions, long-form</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 03b BUTTONS -->
+<!-- ================================================================ -->
+<section id="buttons">
+  <div class="section-label">03b / Button System</div>
+  <div class="section-title">Button Specs &amp; Purple Test</div>
+  <div class="section-desc">All buttons: 50px height, 3px border-radius, 20px min padding. We are testing purple (#86308B) as the primary CTA colour alongside the established pink (#FC0A7E).</div>
+
+  <div class="callout">
+    <h4>A/B Test: Purple vs. Pink Buttons</h4>
+    <p>Starting with the pricing page, we are testing #86308B purple as the primary CTA colour. Purple ties directly into the logo, differentiates BrokerBot from the sea of pink/coral SaaS buttons, and projects more authority on enterprise pages. Pink (#FC0A7E) remains the default for marketing and awareness content until test results confirm direction.</p>
+  </div>
+
+  <div class="grid-2 mt-32">
+    <div class="card">
+      <div class="card-label">Pink Buttons (Current Default)</div>
+      <p class="mb-24" style="font-size:13px;color:var(--bb-gray-400)">50px height / 3px radius / 20px min padding</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+        <div class="btn-specimen btn-pink">Default</div>
+        <div class="btn-specimen btn-pink-hover">Hover</div>
+        <div class="btn-specimen btn-disabled">Disabled</div>
+      </div>
+      <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+        <div class="btn-specimen btn-outline-pink">Outline</div>
+        <div class="btn-specimen btn-outline-pink-hover">Outline Hover</div>
+      </div>
+    </div>
+    <div class="card" style="border-color:var(--bb-purple);border-width:2px">
+      <div class="card-label" style="color:var(--bb-purple)">Purple Buttons (Testing)</div>
+      <p class="mb-24" style="font-size:13px;color:var(--bb-gray-400)">Same specs, testing on pricing page first</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+        <div class="btn-specimen btn-purple">Default</div>
+        <div class="btn-specimen btn-purple-hover">Hover</div>
+        <div class="btn-specimen btn-disabled">Disabled</div>
+      </div>
+      <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+        <div class="btn-specimen btn-outline-purple">Outline</div>
+        <div class="btn-specimen btn-outline-purple-hover">Outline Hover</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mt-32">
+    <div class="card-label">Button Placement Guidelines</div>
+    <h3>When to Use Each Style</h3>
+    <p class="mt-16"><strong style="color:var(--bb-text-primary)">Filled buttons</strong> for primary actions: "Book a Demo," "Start Free Trial," "Get Started," pricing tier CTAs.</p>
+    <p class="mt-16"><strong style="color:var(--bb-text-primary)">Outline buttons</strong> for secondary actions: "Learn More," "See Features," "Watch Demo," when paired next to a filled CTA.</p>
+    <p class="mt-16"><strong style="color:var(--bb-text-primary)">On dark sections:</strong> Use white-filled buttons with pink or purple text, or pink-filled buttons with white text. Never use outline buttons on dark backgrounds.</p>
+    <p class="mt-16"><strong style="color:var(--bb-text-primary)">Icon buttons:</strong> Icon right-justified, text left-justified, 20px padding. Same height/radius specs.</p>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 04 VOICE & TONE -->
+<!-- ================================================================ -->
+<section id="voice">
+  <div class="section-label">04 / Voice &amp; Tone</div>
+  <div class="section-title">How We Sound</div>
+  <div class="section-desc">BrokerBot's voice is the confident friend who happens to know your industry cold. Punchy, numbers-driven, loss-aversion framing.</div>
+  <div class="card mb-32">
+    <div class="card-label">Voice Spectrum</div>
+    <div style="margin-top:16px">
+      <div class="voice-bar"><span class="bar-label">Formal</span><div class="bar-track"><div class="bar-fill" style="width:25%"></div></div><span class="bar-end">Casual</span></div>
+      <div class="voice-bar"><span class="bar-label">Corporate</span><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div><span class="bar-end">Practitioner</span></div>
+      <div class="voice-bar"><span class="bar-label">Feature-led</span><div class="bar-track"><div class="bar-fill" style="width:80%"></div></div><span class="bar-end">Outcome-led</span></div>
+      <div class="voice-bar"><span class="bar-label">Soft sell</span><div class="bar-track"><div class="bar-fill" style="width:75%"></div></div><span class="bar-end">Loss aversion</span></div>
+      <div class="voice-bar"><span class="bar-label">Verbose</span><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div><span class="bar-end">Punchy</span></div>
+      <div class="voice-bar"><span class="bar-label">Generic</span><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div><span class="bar-end">Canada-specific</span></div>
+    </div>
+  </div>
+  <div class="grid-2">
+    <div class="card"><div class="card-label">Voice Pillars</div><h3>How we always sound</h3><p class="mt-16"><strong>Numbers-first.</strong> Lead with data. "$2.3M evaporated" hits harder than "you could lose revenue." Always quantify the pain.</p><p class="mt-16"><strong>Direct and declarative.</strong> Short sentences. Active voice. "BrokerBot fixes that. Automatically." No hedging.</p><p class="mt-16"><strong>Practitioner-level.</strong> We speak to dealmakers, not C-suites. Use industry terms: "book of business," "renewal," "refi," "HELOC."</p><p class="mt-16"><strong>Canadian identity.</strong> We reference PIPEDA, B-20, Filogix, 5-year terms, and CASL. We are not a US product with a maple leaf sticker.</p></div>
+    <div class="card"><div class="card-label">Tone Modulation</div><h3>How tone shifts by context</h3><p class="mt-16"><strong>Website / Ads:</strong> Maximum punch. Loss aversion. "70% of past clients don't return."</p><p class="mt-16"><strong>Email / Nurture:</strong> Warm but urgent. "Your clients are checking home values right now."</p><p class="mt-16"><strong>Sales / Demo:</strong> Confident, proof-heavy. "29% retention vs. 20% average."</p><p class="mt-16"><strong>Support / Onboarding:</strong> Patient, clear, encouraging. "Upload your list. BrokerBot does the rest."</p><p class="mt-16"><strong>Enterprise / Lender:</strong> Slightly more formal, ROI-centric. "Reduce borrower attrition with automated equity intelligence."</p></div>
+  </div>
+  <div class="do-dont-grid mt-32">
+    <div class="do-box"><h4>Write Like This</h4><ul>
+      <li>"70% of past clients don't return. BrokerBot fixes that."</li>
+      <li>"At $5,784 per loan, losing 400 deals = $2.3M evaporated."</li>
+      <li>"You're not a marketer. You're a dealmaker."</li>
+      <li>"Clients check property values like stocks."</li>
+      <li>"Your brand, your logo, your face. Not ours."</li>
+      <li>"Built for Canadian brokers, by people who know the market."</li>
+    </ul></div>
+    <div class="dont-box"><h4>Never Write Like This</h4><ul>
+      <li>"We are pleased to offer an innovative solution..."</li>
+      <li>"Leverage our cutting-edge AI capabilities..."</li>
+      <li>"BrokerBot is a best-in-class platform..."</li>
+      <li>"Utilize our robust engagement engine..."</li>
+      <li>"We help you synergize client touchpoints..."</li>
+      <li>"Our proprietary algorithms maximize ROI..."</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 05 MESSAGING -->
+<!-- ================================================================ -->
+<section id="messaging">
+  <div class="section-label">05 / Messaging Framework</div>
+  <div class="section-title">Core Messages</div>
+  <div class="section-desc">Every piece of BrokerBot content ladders up to these messages. Click the copy button on any block to grab it.</div>
+  <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">Primary Tagline</div><div class="copy-text">Own Your Customers. Own the Funnel.</div></div>
+  <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">One-Liner</div><div class="copy-text">Canada's client-retention and lead generation platform for real estate professionals.</div></div>
+  <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">Elevator Pitch (30 seconds)</div><div class="copy-text">70% of past clients never come back to their mortgage broker. Not because the service was bad, but because they forgot who helped them. BrokerBot fixes that. We automatically send your clients monthly home value updates, equity insights, and renewal reminders, all branded with your name and logo. Powered by 18 million Canadian property records, BrokerBot keeps you top-of-mind so when your clients are ready to renew, refinance, or refer, you are the first call they make.</div></div>
+  <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">Boilerplate</div><div class="copy-text">BrokerBot is Canada's client-retention and referral automation platform for real estate professionals. The platform delivers AI-powered monthly home value updates, automated email engagement, equity estimates, and renewal tracking to mortgage brokers, lenders, real estate agents, appraisers, and insurance professionals. Built on a proprietary database of over 18 million Canadian residential properties through its OPTA/FCT data partnership, BrokerBot provides white-labeled experiences that keep professionals top-of-mind with their clients. BrokerBot clients achieve a 29% retention rate versus the 20% industry average, with break-even at approximately four retained clients. Headquartered in Ottawa, Ontario, BrokerBot is bilingual (English and French) and built for Canadian regulatory requirements including PIPEDA compliance. Learn more at thebrokerbot.ca.</div></div>
+  <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">Short Bio</div><div class="copy-text">BrokerBot is Canada's client-retention platform for real estate professionals. Powered by 18M+ property records, we help mortgage brokers, agents, appraisers, and lenders keep clients for life with AI-driven home value updates, automated engagement, and white-labeled brand experiences. 29% retention vs. 20% industry average.</div></div>
+
+  <!-- Dark accent banner for stats -->
+  <div class="full-dark-banner mt-48">
+    <div style="font-family:'Gothic A1';font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--bb-pink);margin-bottom:8px">Key Stats for Copy</div>
+    <div style="font-family:'Gothic A1';font-size:22px;font-weight:800;color:#fff;letter-spacing:-.3px">Numbers that should appear in every deck and landing page.</div>
+    <div class="stat-row">
+      <div class="stat-item"><div class="stat-num">18M+</div><div class="stat-label">Canadian property records</div></div>
+      <div class="stat-item"><div class="stat-num">29%</div><div class="stat-label">Retention (vs 20% avg)</div></div>
+      <div class="stat-item"><div class="stat-num">82%</div><div class="stat-label">Want monthly updates</div></div>
+      <div class="stat-item"><div class="stat-num">$2.3M</div><div class="stat-label">Lost at 400 deals</div></div>
+    </div>
+  </div>
+
+  <div class="section-label mt-48">Power Phrases</div>
+  <div class="grid-2 mt-16">
+    <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">Loss Aversion Hook</div><div class="copy-text">70% of past clients don't return. Not because they hated your service. Because they forgot you existed. Meanwhile, 60% of mortgage deals come from referrals and repeat clients. Without consistent follow-up, your book of business becomes someone else's payday.</div></div>
+    <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">Revenue Math Hook</div><div class="copy-text">The revenue math doesn't lie. At $5,784 per loan, losing 400 deals equals $2.3M evaporated. BrokerBot clients typically see a 29%+ retention boost in Year 1. Break-even happens at just four retained clients.</div></div>
+    <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">Behavioral Insight Hook</div><div class="copy-text">People check property values like stocks. 82% of homeowners want monthly home value updates. Referral trust sits at 82%. Trust in banner ads? Be where your clients already are: thinking about real estate.</div></div>
+    <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">Canadian Differentiation Hook</div><div class="copy-text">A US platform with a maple leaf sticker is not a Canadian platform. BrokerBot is built on 18M+ Canadian property records from OPTA/FCT, designed for 5-year renewal cycles, PIPEDA-compliant, bilingual, and integrated with the tools Canadian brokers actually use.</div></div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 06 ICP -->
+<!-- ================================================================ -->
+<section id="icp">
+  <div class="section-label">06 / Ideal Customer Profiles</div>
+  <div class="section-title">Who We Serve</div>
+  <div class="section-desc">Five distinct verticals across the Canadian housing ecosystem. Each has unique pain points, but they share one truth: they are losing clients to inertia.</div>
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="showTab('icp-mortgage',this)">Mortgage Brokers</button>
+    <button class="tab-btn" onclick="showTab('icp-lenders',this)">Lenders</button>
+    <button class="tab-btn" onclick="showTab('icp-agents',this)">RE Agents</button>
+    <button class="tab-btn" onclick="showTab('icp-appraisers',this)">Appraisers</button>
+    <button class="tab-btn" onclick="showTab('icp-insurance',this)">Insurance</button>
+  </div>
+  <div class="tab-panel active" id="icp-mortgage"><div class="grid-2"><div class="icp-card"><div class="icp-icon" style="background:var(--bb-pink-glow-strong);color:var(--bb-pink)">&#127974;</div><h3>Mortgage Brokers</h3><div class="icp-tagline">"Win back past clients and referrals."</div><div class="icp-detail"><strong>Who:</strong> Independent and brokerage-affiliated mortgage brokers with 100+ past clients</div><div class="icp-detail"><strong>Pain:</strong> 70% client attrition. Banks call at renewal. No time for marketing.</div><div class="icp-detail"><strong>Trigger:</strong> Renewal season pressure, lost client to bank, watching deals walk out the door</div><div class="icp-detail"><strong>Outcome:</strong> Automated retention that feels personal, surfaced renewal/refi opportunities, referral generation</div><div class="icp-detail"><strong>Decision criteria:</strong> ROI speed (break-even at 4 clients), Canadian data accuracy, white-label, set-and-forget</div></div><div class="card"><div class="card-label">Key Copy Angles</div><p class="mt-16" style="font-size:14px"><span class="inline-tag">Loss aversion</span> "Your book of business becomes someone else's payday."</p><p class="mt-16" style="font-size:14px"><span class="inline-tag">Identity</span> "You're not a marketer. You're a dealmaker."</p><p class="mt-16" style="font-size:14px"><span class="inline-tag">Revenue math</span> "$5,784 per loan x 400 lost deals = $2.3M evaporated."</p><p class="mt-16" style="font-size:14px"><span class="inline-tag">Trust data</span> "Referral trust: 82%."</p><p class="mt-16" style="font-size:14px"><span class="inline-tag">Automation</span> "Upload your list. BrokerBot does the rest."</p></div></div></div>
+  <div class="tab-panel" id="icp-lenders"><div class="grid-2"><div class="icp-card"><div class="icp-icon" style="background:var(--bb-purple-glow);color:var(--bb-purple)">&#127963;</div><h3>Lenders</h3><div class="icp-tagline">"Retain more borrowers and renew more loans."</div><div class="icp-detail"><strong>Who:</strong> Credit unions, monoline lenders, alternative lenders, national banks</div><div class="icp-detail"><strong>Pain:</strong> Borrower attrition at renewal, losing to broker channel, no post-funding engagement</div><div class="icp-detail"><strong>Trigger:</strong> Renewal portfolio pressure, competitive rate environment, board mandate for retention</div><div class="icp-detail"><strong>Outcome:</strong> Automated borrower retention at scale, reduced attrition, data-driven renewal pipeline</div><div class="icp-detail"><strong>Decision criteria:</strong> Enterprise scalability, compliance (PIPEDA, CASL), integrations, white-label</div></div><div class="card"><div class="card-label">Key Copy Angles</div><p class="mt-16" style="font-size:14px"><span class="inline-tag-purple">Scale</span> "From credit unions to national banks."</p><p class="mt-16" style="font-size:14px"><span class="inline-tag-purple">ROI</span> "Reduce borrower attrition with automated equity intelligence."</p><p class="mt-16" style="font-size:14px"><span class="inline-tag-purple">Compliance</span> "PIPEDA-compliant, CASL-ready, Canadian data sovereignty."</p><p class="mt-16" style="font-size:14px"><span class="inline-tag-purple">Data</span> "18M+ property records via OPTA/FCT."</p></div></div></div>
+  <div class="tab-panel" id="icp-agents"><div class="grid-2"><div class="icp-card"><div class="icp-icon" style="background:rgba(52,73,94,0.1);color:var(--bb-slate)">&#127968;</div><h3>Real Estate Agents</h3><div class="icp-tagline">"Stay their agent long after possession day."</div><div class="icp-detail"><strong>Who:</strong> Listing agents, buyer agents, and teams with past-client databases</div><div class="icp-detail"><strong>Pain:</strong> Clients forget you post-possession. Portals capture the next listing.</div><div class="icp-detail"><strong>Trigger:</strong> Lost listing to a portal lead, past clients listed with someone else</div><div class="icp-detail"><strong>Outcome:</strong> Stay top-of-mind between transactions, surface move-up candidates</div><div class="icp-detail"><strong>Decision criteria:</strong> Ease of setup, value of content, co-branding with mortgage partners</div></div><div class="card"><div class="card-label">Key Copy Angles</div><p class="mt-16" style="font-size:14px"><span class="inline-tag">Relevance</span> "Clients forget names, not value."</p><p class="mt-16" style="font-size:14px"><span class="inline-tag">Timing</span> "Monthly updates keep you top-of-mind until the next move."</p><p class="mt-16" style="font-size:14px"><span class="inline-tag">Anti-awkward</span> "No more 'just checking in' emails."</p><p class="mt-16" style="font-size:14px"><span class="inline-tag">Listings</span> "Conversations become listings. Listings become referrals."</p></div></div></div>
+  <div class="tab-panel" id="icp-appraisers"><div class="grid-2"><div class="icp-card"><div class="icp-icon" style="background:rgba(51,181,171,0.1);color:var(--bb-success)">&#128202;</div><h3>Appraisers</h3><div class="icp-tagline">"Stay top of mind with monthly value touchpoints."</div><div class="icp-detail"><strong>Who:</strong> Independent appraisers and appraisal firms</div><div class="icp-detail"><strong>Pain:</strong> Commoditized service, no engagement between appraisals</div><div class="icp-detail"><strong>Trigger:</strong> Differentiate from AMC competition, build referral relationships</div><div class="icp-detail"><strong>Outcome:</strong> Position as market-knowledge expert</div><div class="icp-detail"><strong>Decision criteria:</strong> Data accuracy, professional presentation, ease of use</div></div><div class="card"><div class="card-label">Key Copy Angles</div><p class="mt-16" style="font-size:14px"><span class="inline-tag">Authority</span> "Reinforce expertise with intelligence your network reads."</p><p class="mt-16" style="font-size:14px"><span class="inline-tag">Differentiation</span> "Stop being a commodity."</p><p class="mt-16" style="font-size:14px"><span class="inline-tag">Referrals</span> "Build your network with brokers who value your data."</p></div></div></div>
+  <div class="tab-panel" id="icp-insurance"><div class="grid-2"><div class="icp-card"><div class="icp-icon" style="background:rgba(255,0,78,0.08);color:var(--bb-error)">&#128737;</div><h3>Insurance Professionals</h3><div class="icp-tagline">"Cross-sell at every homeowner milestone."</div><div class="icp-detail"><strong>Who:</strong> P&amp;C brokers, home insurance specialists</div><div class="icp-detail"><strong>Pain:</strong> Passive renewals, missing cross-sell moments</div><div class="icp-detail"><strong>Trigger:</strong> Increase retention, cross-sell into mortgage referral networks</div><div class="icp-detail"><strong>Outcome:</strong> Surface triggers, cross-sell at milestones</div><div class="icp-detail"><strong>Decision criteria:</strong> Workflow integration, trigger accuracy</div></div><div class="card"><div class="card-label">Key Copy Angles</div><p class="mt-16" style="font-size:14px"><span class="inline-tag">Milestones</span> "Home value up 15%? That is a coverage conversation."</p><p class="mt-16" style="font-size:14px"><span class="inline-tag">Cross-sell</span> "Every equity milestone is an insurance touchpoint."</p><p class="mt-16" style="font-size:14px"><span class="inline-tag">Network</span> "Plug into the broker-agent ecosystem."</p></div></div></div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 07 COMPETITIVE -->
+<!-- ================================================================ -->
+<section id="competitive">
+  <div class="section-label">07 / Competitive Positioning</div>
+  <div class="section-title">How We Win</div>
+  <div class="section-desc">BrokerBot competes against Ownwell (Canada) and HomeBot (US). Our moat is Canadian data depth, multi-vertical reach, and full white-label.</div>
+  <div style="overflow-x:auto">
+    <table class="comp-table">
+      <thead><tr><th style="width:28%">Capability</th><th class="highlight" style="width:24%">BrokerBot</th><th style="width:24%">Ownwell (CA)</th><th style="width:24%">HomeBot (US)</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Canadian Property Data</strong></td><td class="check">18M+ via OPTA/FCT</td><td class="partial">Third-party provider</td><td class="cross">US data only</td></tr>
+        <tr><td><strong>White-Label Branding</strong></td><td class="check">Full white-label</td><td class="partial">Partial (from-name)</td><td class="check">Co-branded</td></tr>
+        <tr><td><strong>Verticals Served</strong></td><td class="check">5 verticals</td><td class="partial">2 (Broker + Agent)</td><td class="check">5+ verticals</td></tr>
+        <tr><td><strong>AI Lead Pre-Qualification</strong></td><td class="check">Built-in</td><td class="cross">Not available</td><td class="partial">Behavioral signals</td></tr>
+        <tr><td><strong>Renewal Tracking</strong></td><td class="check">Built-in</td><td class="partial">Opportunity surfacing</td><td class="cross">N/A (US 30yr)</td></tr>
+        <tr><td><strong>Bilingual (EN/FR)</strong></td><td class="check">Yes</td><td class="cross">English only</td><td class="cross">English only</td></tr>
+        <tr><td><strong>PIPEDA Compliance</strong></td><td class="check">Yes</td><td class="check">Yes</td><td class="cross">US compliance only</td></tr>
+        <tr><td><strong>Referral Partner Engine</strong></td><td class="check">Built-in</td><td class="check">"Adopt My Mortgage"</td><td class="check">Co-sponsorship</td></tr>
+        <tr><td><strong>Enterprise Play</strong></td><td class="check">Individual to national bank</td><td class="partial">Brokerage-level</td><td class="check">Banks, CUs, enterprise</td></tr>
+        <tr><td><strong>5-Year Renewal Cycle</strong></td><td class="check">Designed for it</td><td class="check">Designed for it</td><td class="cross">30-year US model</td></tr>
+        <tr><td><strong>Diagnostic Tools</strong></td><td class="check">Ghost Score Calculator</td><td class="cross">Not available</td><td class="partial">Likelihood to Sell</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="grid-3 mt-48">
+    <div class="card"><div class="card-label">vs. Ownwell</div><h3>Battlecard</h3><p class="mt-16"><strong style="color:var(--bb-pink)">We win on:</strong> Proprietary 18M database, full white-label, 5 verticals vs. 2, AI pre-qualification, renewal tracking, bilingual.</p><p class="mt-16"><strong style="color:#D4930D">They claim:</strong> "Only Canadian-owned retention platform." 7X ROI, 66% open rates.</p><p class="mt-16"><strong>Counter:</strong> BrokerBot's data advantage is unmatched. 18M records from OPTA/FCT vs. third-party feed. Five verticals, not two.</p></div>
+    <div class="card"><div class="card-label">vs. HomeBot</div><h3>Battlecard</h3><p class="mt-16"><strong style="color:var(--bb-pink)">We win on:</strong> Canadian market coverage (they have zero), 5-year renewal design, PIPEDA, bilingual, OPTA/FCT data.</p><p class="mt-16"><strong style="color:#D4930D">They claim:</strong> 8M+ homeowners, 50% engagement, predictive scoring, mobile apps.</p><p class="mt-16"><strong>Counter:</strong> Great US product, completely irrelevant in Canada. No Canadian data, compliance, or understanding of 5-year terms.</p></div>
+    <div class="card"><div class="card-label">Our Moat</div><h3>Why BrokerBot Wins</h3><p class="mt-16"><strong style="color:var(--bb-pink)">Data moat:</strong> OPTA/FCT's 18M residential + 7M commercial. Nobody else has this.</p><p class="mt-16"><strong style="color:var(--bb-pink)">Multi-vertical:</strong> Five verticals = network effects. Brokers invite agents.</p><p class="mt-16"><strong style="color:var(--bb-pink)">Regulatory:</strong> PIPEDA, CASL, bilingual. Not a feature. A requirement.</p></div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 08 SALES COPY -->
+<!-- ================================================================ -->
+<section id="sales-copy">
+  <div class="section-label">08 / Vertical Sales Copy</div>
+  <div class="section-title">Ready-to-Use Copy</div>
+  <div class="section-desc">Grab-and-go copy organized by vertical. Each snippet is voice-tested and ready for ads, emails, landing pages, and decks.</div>
+  <div class="tab-nav">
+    <button class="tab-btn active" onclick="showTab('copy-brokers',this)">Mortgage Brokers</button>
+    <button class="tab-btn" onclick="showTab('copy-lenders',this)">Lenders</button>
+    <button class="tab-btn" onclick="showTab('copy-agents',this)">RE Agents</button>
+    <button class="tab-btn" onclick="showTab('copy-appraisers',this)">Appraisers</button>
+    <button class="tab-btn" onclick="showTab('copy-insurance',this)">Insurance</button>
+  </div>
+  <div class="tab-panel active" id="copy-brokers">
+    <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">Headline / Hero</div><div class="copy-text">70% of past clients don't return. Not because they hated your service. Because they forgot you existed. BrokerBot fixes that. Automatically.</div></div>
+    <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">Value Prop</div><div class="copy-text">BrokerBot is your AI-powered client retention and referral machine, built just for mortgage pros. It automates everything you should be doing but don't have time for: monthly home value updates branded with your name, equity alerts that spark refi and HELOC conversations, renewal tracking that tells you exactly when clients are up for renewal, and referral tools that grow your network while you close deals.</div></div>
+    <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">Email Subject Lines</div><div class="copy-text">Your clients are checking home values right now. Are you the one sending them?
+How many clients did the bank steal this year?
+$5,784 per loan. How many are you losing to silence?
+Your book of business has a leak. Here is how to plug it.
+That client you closed in 2021? Someone else is closing their renewal.</div></div>
+    <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">CTA Variations</div><div class="copy-text">Book a Demo: See How BrokerBot Keeps Clients Coming Back
+Stop Losing Clients. Start BrokerBot.
+Calculate Your Ghost Score: How Many Clients Have You Lost?
+Upload Your List. BrokerBot Does the Rest.</div></div>
+    <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">LinkedIn Ad</div><div class="copy-text">The math is simple.
+
+At $5,784 per loan, losing 400 deals equals $2.3M evaporated.
+
+Most brokers know they should follow up with past clients. Most brokers don't.
+
+BrokerBot automates the follow-up with monthly home value updates, equity alerts, and renewal reminders, all branded with YOUR name.
+
+29% retention rate vs. 20% industry average. Break-even at 4 clients.
+
+Book a demo and stop the leak.</div></div>
+  </div>
+  <div class="tab-panel" id="copy-lenders">
+    <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">Headline</div><div class="copy-text">Retain more borrowers. Renew more loans. Automated equity intelligence for Canadian lenders.</div></div>
+    <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">Enterprise Pitch</div><div class="copy-text">BrokerBot provides lenders with automated borrower engagement at scale. Powered by 18M+ Canadian property records, the platform delivers white-labeled monthly home value updates, equity insights, and renewal pipeline intelligence. Reduce borrower attrition, increase renewal conversion rates, and give your team data-driven touchpoints that keep your institution top-of-mind throughout the entire mortgage lifecycle. PIPEDA-compliant. CASL-ready. Bilingual. Built for Canadian regulatory requirements from the ground up.</div></div>
+    <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">Pain Point</div><div class="copy-text">Your borrowers check their home value more often than their mortgage statement. Are you the institution delivering that insight, or is someone else earning that mindshare? Every month a borrower doesn't hear from you, a competitor gets closer to winning their renewal.</div></div>
+  </div>
+  <div class="tab-panel" id="copy-agents">
+    <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">Headline</div><div class="copy-text">Clients forget names, not value. BrokerBot turns market curiosity into conversations, and conversations into listings.</div></div>
+    <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">Value Prop</div><div class="copy-text">Monthly value updates and smart check-ins keep you top-of-mind until the next move, without awkward "just checking in" emails. BrokerBot automatically sends your past clients their home's current value, equity position, and neighborhood market insights, all branded with your name and face.</div></div>
+    <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">Social Ad</div><div class="copy-text">Remember that buyer you helped find their dream home in 2022?
+
+They just listed with someone else.
+
+Not because your service was bad. Because you went silent.
+
+BrokerBot sends your past clients monthly home value updates with YOUR name on them. When they are ready to move again, you are the first call.</div></div>
+  </div>
+  <div class="tab-panel" id="copy-appraisers">
+    <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">Headline</div><div class="copy-text">Stop being a commodity. Start being the market intelligence expert your referral network relies on.</div></div>
+    <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">Value Prop</div><div class="copy-text">BrokerBot helps appraisers stay top of mind with monthly value touchpoints and helpful education. Position yourself as the property data authority in your market by delivering branded home value updates to your referral network. BrokerBot, powered by 18M+ Canadian property records, gives you the content to prove your expertise every single month.</div></div>
+  </div>
+  <div class="tab-panel" id="copy-insurance">
+    <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">Headline</div><div class="copy-text">Every equity milestone is an insurance conversation. BrokerBot surfaces them for you.</div></div>
+    <div class="copy-block"><button class="copy-btn" onclick="copyText(this)">Copy</button><div class="copy-label">Value Prop</div><div class="copy-text">Home values go up. Renovation projects start. Each of these is a coverage gap waiting to happen, and a cross-sell opportunity waiting to be had. BrokerBot tracks equity changes and homeowner milestones so you can engage at the right moment. Plug into the broker-agent referral ecosystem as the insurance partner of choice.</div></div>
+  </div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 09 SLIDES -->
+<!-- ================================================================ -->
+<section id="slides">
+  <div class="section-label">09 / Presentation Style Guide</div>
+  <div class="section-title">Slide Deck Standards</div>
+  <div class="section-desc">All BrokerBot presentations use light backgrounds as default with dark accent slides for hero moments and key stat reveals.</div>
+
+  <div class="callout-pink">
+    <h4>Light-First Slide Strategy</h4>
+    <p>Most slides use white backgrounds with #2F3439 text. Reserve dark (#0B1818) slides for the title, key stat reveals, and CTA. This creates a rhythm: content on light, impact on dark.</p>
+  </div>
+
+  <div class="grid-2 mt-32 mb-32">
+    <div class="slide-mock dark-slide"><span class="slide-label">Title Slide (Dark)</span><div style="text-align:center"><div style="font-family:'Gothic A1';font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--bb-pink);margin-bottom:16px">brokerbot</div><div style="font-family:'Gothic A1';font-size:26px;font-weight:900;color:#fff;letter-spacing:-.5px;line-height:1.2">Own Your Customers.<br>Own the Funnel.</div><div style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:16px;font-family:'Mulish'">Presenter Name / Date / Audience</div></div></div>
+    <div class="slide-mock light-slide"><span class="slide-label">Content Slide (Light)</span><div><div style="font-family:'Gothic A1';font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--bb-pink);margin-bottom:8px">The Problem</div><div style="font-family:'Gothic A1';font-size:19px;font-weight:900;color:var(--bb-text-primary);letter-spacing:-.3px;margin-bottom:12px;line-height:1.2">70% of past clients never come back</div><div style="font-size:11px;color:var(--bb-gray-500);line-height:1.6;font-family:'Mulish'">One key message per slide. Use data, not adjectives.</div><div style="display:flex;gap:10px;margin-top:14px"><div style="background:var(--bb-pink-glow-strong);border-radius:6px;padding:8px 12px;text-align:center;flex:1"><div style="font-family:'Gothic A1';font-size:20px;font-weight:900;color:var(--bb-pink)">29%</div><div style="font-size:9px;color:var(--bb-gray-400);font-family:'Mulish'">Retention</div></div><div style="background:var(--bb-pink-glow-strong);border-radius:6px;padding:8px 12px;text-align:center;flex:1"><div style="font-family:'Gothic A1';font-size:20px;font-weight:900;color:var(--bb-pink)">$2.3M</div><div style="font-size:9px;color:var(--bb-gray-400);font-family:'Mulish'">At risk</div></div><div style="background:var(--bb-pink-glow-strong);border-radius:6px;padding:8px 12px;text-align:center;flex:1"><div style="font-family:'Gothic A1';font-size:20px;font-weight:900;color:var(--bb-pink)">18M+</div><div style="font-size:9px;color:var(--bb-gray-400);font-family:'Mulish'">Properties</div></div></div></div></div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card"><div class="card-label">Visual Standards</div><h3>Slide Design Rules</h3><p class="mt-16"><strong>Default background: white.</strong> Content slides use white with #2F3439 text. Keeps things clean and readable.</p><p class="mt-16"><strong>Dark accent slides:</strong> Title, key stat reveals, and CTA slides use #0B1818 for dramatic contrast.</p><p class="mt-16"><strong>Headlines:</strong> Gothic A1 Black 900. Under 10 words. Pink for stats.</p><p class="mt-16"><strong>Body:</strong> Mulish Regular, max 4 lines per slide.</p><p class="mt-16"><strong>Charts:</strong> Pink for BrokerBot, Slate (#34495E) for competitors.</p></div>
+    <div class="card"><div class="card-label">Narrative Standards</div><h3>Slide Content Rules</h3><p class="mt-16"><strong>Problem first.</strong> Start every deck with pain on a dark slide. Lead with loss.</p><p class="mt-16"><strong>One stat per slide.</strong> More than one key number = split it.</p><p class="mt-16"><strong>End with proof.</strong> Case studies and revenue math in the final third.</p><p class="mt-16"><strong>CTA slide (dark):</strong> End with "Book a Demo" on a dark background. Never "Questions?"</p></div>
+  </div>
+  <div class="card mt-32"><div class="card-label">Recommended Deck Flow</div><h3>Standard Sales Deck</h3><div class="mt-16" style="display:flex;gap:8px;flex-wrap:wrap"><span class="inline-tag">1. Title (dark)</span><span class="inline-tag">2. The Problem</span><span class="inline-tag">3. Revenue Math</span><span class="inline-tag">4. Why It Happens</span><span class="inline-tag">5. How BrokerBot Fixes It</span><span class="inline-tag">6. Features (3 max)</span><span class="inline-tag">7. Data Advantage</span><span class="inline-tag">8. Social Proof</span><span class="inline-tag">9. Pricing / ROI</span><span class="inline-tag">10. CTA (dark)</span></div></div>
+</section>
+
+<!-- ================================================================ -->
+<!-- 10 DOS AND DONTS -->
+<!-- ================================================================ -->
+<section id="dos-donts">
+  <div class="section-label">10 / Brand Do's &amp; Don'ts</div>
+  <div class="section-title">Protect the Brand</div>
+  <div class="section-desc">These rules ensure BrokerBot looks, sounds, and feels consistent across every touchpoint.</div>
+  <div class="do-dont-grid mb-32">
+    <div class="do-box"><h4>Brand Do's</h4><ul>
+      <li>Default to white/light backgrounds for all pages and materials</li>
+      <li>Use dark (#0B1818) sections strategically for hero banners, stat strips, and CTA blocks</li>
+      <li>Use #FC0A7E (pink) for CTAs and highlights; test #86308B (purple) buttons on pricing</li>
+      <li>Lead with pain/loss aversion in headlines, then pivot to the solution</li>
+      <li>Quantify everything: $5,784, 29%, 18M+, 82%</li>
+      <li>Speak to practitioners: "book of business," "renewal," "refi"</li>
+      <li>Reference Canadian context: PIPEDA, B-20, 5-year terms, Filogix</li>
+      <li>Use Gothic A1 for headings and Mulish for body (Google Fonts only)</li>
+      <li>Include "re engage" tagline with the logo where space permits</li>
+      <li>Button specs: 50px height, 3px radius, 20px min padding, always</li>
+    </ul></div>
+    <div class="dont-box"><h4>Brand Don'ts</h4><ul>
+      <li>Never default to all-dark page designs (dark is for accent sections only)</li>
+      <li>Never use buzzwords: "leverage," "synergize," "cutting-edge," "robust," "best-in-class"</li>
+      <li>Never use em dashes. Use commas, colons, semicolons, or rewrite instead</li>
+      <li>Never put BrokerBot's brand ahead of the customer's brand</li>
+      <li>Never use stock photos of handshakes or generic office scenes</li>
+      <li>Never compare directly to HomeBot by name publicly (say "US platforms")</li>
+      <li>Never promise specific ROI without citing a published case study</li>
+      <li>Never use passive voice in headlines</li>
+      <li>Never substitute non-Google fonts for Gothic A1 or Mulish</li>
+      <li>Never modify the logo colours outside purple (#86308B) and white</li>
+    </ul></div>
+  </div>
+  <div class="do-dont-grid">
+    <div class="do-box"><h4>Logo Usage</h4><ul>
+      <li>Logo_light (purple icon + dark text): white/light backgrounds</li>
+      <li>Logo_dark (white icon + white text): dark or coloured backgrounds</li>
+      <li>Logo_small: nav bars, tight spaces, app icons</li>
+      <li>Export: PNG @2x and SVG. Favicon: ICO at 64x64px</li>
+      <li>Minimum 120px wide digital, 1 inch print. Maintain aspect ratio.</li>
+    </ul></div>
+    <div class="dont-box"><h4>Logo Misuse</h4><ul>
+      <li>Never place logo on busy backgrounds without a solid overlay</li>
+      <li>Never rotate, skew, add drop shadows, or effects</li>
+      <li>Never change icon colour from purple or white</li>
+      <li>Never use low-res. Always SVG or PNG @2x</li>
+      <li>Never separate the icon from the wordmark in formal usage</li>
+    </ul></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div style="font-family:'Gothic A1';font-weight:800;font-size:20px;color:var(--bb-purple);margin-bottom:4px">brokerbot</div>
+  <div style="font-size:11px;color:var(--bb-gray-400);letter-spacing:1px;margin-bottom:16px">re engage</div>
+  <p>Brand Kit v3.0 / March 2026 / Confidential</p>
+  <p style="margin-top:4px;color:var(--bb-gray-500)">Own Your Customers. Own the Funnel.</p>
+  <p style="margin-top:16px;color:var(--bb-gray-300)">1-1439 Youville Drive, Ottawa, ON / thebrokerbot.ca</p>
+</footer>
+
+<script>
+function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000)}
+function copyColor(h){navigator.clipboard.writeText(h).then(()=>showToast('Copied: '+h))}
+function copyText(b){const t=b.closest('.copy-block').querySelector('.copy-text').textContent.trim();navigator.clipboard.writeText(t).then(()=>{b.textContent='Copied!';b.style.background='var(--bb-pink)';b.style.color='#fff';b.style.borderColor='var(--bb-pink)';showToast('Copied to clipboard');setTimeout(()=>{b.textContent='Copy';b.style.background='';b.style.color='';b.style.borderColor=''},2000)})}
+function showTab(id,btn){const p=btn.closest('section');p.querySelectorAll('.tab-panel').forEach(t=>t.classList.remove('active'));p.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById(id).classList.add('active');btn.classList.add('active')}
+const secs=document.querySelectorAll('section[id]'),navs=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{let c='';secs.forEach(s=>{if(window.scrollY>=s.offsetTop-100)c=s.id});navs.forEach(l=>{l.classList.remove('active');if(l.getAttribute('href')==='#'+c)l.classList.add('active')})});
+</script>
+</body>
+</html>
