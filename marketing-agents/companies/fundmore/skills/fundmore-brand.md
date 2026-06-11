@@ -109,23 +109,60 @@ use Canadian regulatory terms as decoration -- only when they apply.
 > human, do not publish it. Use sourced industry figures from Tier 1/2 sources instead and
 > label them clearly.
 
-### Power Themes (use as angles, not verbatim scripts)
+### Strategic Messaging Pillars
 
-**Compliance as infrastructure.** OSFI's B-20 requirements aren't going away. Lenders who
-build AI with explainability and audit trails baked in are structurally better positioned
-than those retrofitting compliance onto legacy processes.
+These three pillars are the approved differentiation framework. Use them as the foundation
+for thought-leadership, competitive positioning, and product copy. They replace the earlier
+generic power themes.
 
-**Decision speed as competitive moat.** Cost-to-close is a measurable line item. Every
-day of manual review is a cost and a borrower experience risk. Automation turns speed into
-a sustainable advantage.
+---
 
-**Consistency as risk reduction.** Manual underwriting introduces variance. Variance
-introduces regulatory exposure and fair-lending risk. Consistent, auditable decisioning
-is the risk argument for AI.
+**Pillar 1 -- AI strategy: the model isn't the moat; the lender's policy is.**
 
-**Headless LOS as US expansion lever.** The US headless LOS doesn't ask lenders to
-rip and replace their stack. It integrates into existing front-ends. The barrier to entry
-for US lenders is lower because of this.
+The assumption that underwriting quality comes from hoarding origination data is wrong.
+General reading-and-reasoning ability comes from frontier foundation models -- the same
+capability is available to everyone, and it improves regardless of who owns a loan book.
+What makes an underwriting decision good is whether it correctly applies this lender's
+credit box to this file, with a reasoning trail a human can check.
+
+FundMore AI is "policy-trained per lender" -- trained on your guidelines, not generic
+defaults. The specialising signal is the lender's own credit policy and their underwriters'
+corrections, and on FundMore that signal stays with that lender.
+
+Copy anchors: "policy-trained per lender," "trained on your guidelines, not generic
+defaults," "the model isn't the moat -- your policy is."
+
+---
+
+**Pillar 2 -- Digital twinning: market-level insight without pooling anyone's data.**
+
+Where a market benchmark genuinely helps a lender, FundMore doesn't pool real customer
+loans. It builds a privacy-safe synthetic digital twin derived from platform data --
+representative of the market, but exposing no lender's actual book.
+
+Privacy-safe by construction: a deliberate answer to PIPEDA, Law 25, and B-10 aggregation
+concerns. Benchmarks are disclosed as model-derived, not peer-actuals.
+
+Copy anchors: "privacy-safe synthetic digital twin," "no pooling of real loan data,"
+"benchmarks that are model-derived, not peer-actuals," "PIPEDA / Law 25 / B-10 compliant
+by construction."
+
+---
+
+**Pillar 3 -- Build on existing infrastructure; no rip-and-replace.**
+
+FundMore deploys as agents over a lender's existing LOS. No 12-month IT project unless
+the customer requires it. The live site already says FundMore "works as an extension of
+your current systems."
+
+The conflict-free point: FundMore is pure infrastructure. It never originates, funds, or
+brokers a loan. A vendor that never competes with its customers for borrowers is
+structurally different from one that does. Nesto built a stack for itself; FundMore plugs
+into whatever the lender already runs.
+
+Copy anchors: "no rip-and-replace," "agents over your existing LOS," "works as an
+extension of your current systems," "pure infrastructure -- we never originate, fund, or
+broker a loan."
 
 ---
 
